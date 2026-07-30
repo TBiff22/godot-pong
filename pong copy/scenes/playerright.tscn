@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bjkqhibgvm0o1"]
+
+[ext_resource type="Script" uid="uid://ctvygtomlh6g4" path="res://scenes/playerright.gd" id="1_ie85w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3o55h"]
+size = Vector2(0, 112)
+
+[node name="playerright" type="CharacterBody2D" unique_id=2119176501]
+script = ExtResource("1_ie85w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1586889236]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_3o55h")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=945236742]
+position = Vector2(152, -8)
+polygon = PackedVector2Array(-160, -48, -160, 64, -144, 64, -144, -48)
+uv = PackedVector2Array(-160, -48, -160, 64, -128, 64, -128, -48)
+
+[node name="Timer" type="Timer" parent="." unique_id=1144775515]
+wait_time = 0.714
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

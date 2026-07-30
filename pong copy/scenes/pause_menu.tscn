@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://rwm1j3o281u"]
+
+[ext_resource type="Script" uid="uid://djhoyarqi3pk5" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+
+[node name="pause menu" type="Control" unique_id=137541762]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -312.0
+offset_right = -576.0
+offset_bottom = -312.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n87rw")
+
+[node name="continue" type="Button" parent="." unique_id=1074393991]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 192.0
+offset_right = 744.0
+offset_bottom = 254.0
+theme_override_font_sizes/font_size = 39
+text = "Continue playing"
+
+[node name="end game" type="Button" parent="." unique_id=392654603]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 320.0
+offset_right = 672.0
+offset_bottom = 382.0
+theme_override_font_sizes/font_size = 39
+text = "End Game"
+
+[node name="quit to menu" type="Button" parent="." unique_id=1143628445]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 448.0
+offset_right = 706.0
+offset_bottom = 510.0
+theme_override_font_sizes/font_size = 39
+text = "Quit to menu"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1232431674]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 72.0
+offset_right = 752.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 46
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[connection signal="pause_end" from="." to="." method="_on_pause_end"]
+[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="end game" to="." method="_on_end_game_pressed"]
+[connection signal="pressed" from="quit to menu" to="." method="_on_quit_to_menu_pressed"]

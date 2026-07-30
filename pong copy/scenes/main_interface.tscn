@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://c44w0gic46hty"]
+
+[ext_resource type="PackedScene" uid="uid://4uo6n1vsufk6" path="res://scenes/playerleft.tscn" id="1_7qx7d"]
+[ext_resource type="PackedScene" uid="uid://bjkqhibgvm0o1" path="res://scenes/playerright.tscn" id="2_51bk3"]
+[ext_resource type="AudioStream" uid="uid://whuhh0j32nso" path="res://coin_2.wav" id="2_usys5"]
+[ext_resource type="Script" uid="uid://dkjylnbkb8hh" path="res://scripts/right wall.gd" id="3_efbr5"]
+[ext_resource type="AudioStream" uid="uid://fcmigt6btpe6" path="res://lose.wav" id="3_jqorx"]
+[ext_resource type="PackedScene" uid="uid://dhabs3fxf4gxp" path="res://scenes/ball.tscn" id="3_rgrph"]
+[ext_resource type="Script" uid="uid://7tftwvbmtqbh" path="res://scenes/left_wall.gd" id="5_grylp"]
+[ext_resource type="Script" uid="uid://dhqbftoytxjrq" path="res://scripts/manager.gd" id="6_jarby"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7qx7d"]
+distance = -336.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oeqib"]
+distance = -256.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_njo0q"]
+normal = Vector2(-1, 0)
+distance = -512.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_no1ow"]
+normal = Vector2(1, 0)
+distance = -512.0
+
+[node name="main interface" type="Node2D" unique_id=709578896]
+
+[node name="manager" type="Node" parent="." unique_id=1653654240]
+unique_name_in_owner = true
+script = ExtResource("6_jarby")
+
+[node name="scoretext" type="RichTextLabel" parent="manager" unique_id=1902857978]
+offset_left = -248.0
+offset_top = -328.0
+offset_right = 248.0
+offset_bottom = -240.0
+theme_override_font_sizes/normal_font_size = 60
+text = "0"
+horizontal_alignment = 1
+
+[node name="winsound" type="AudioStreamPlayer2D" parent="manager" unique_id=1532445166]
+stream = ExtResource("2_usys5")
+pitch_scale = 0.87
+
+[node name="losesound" type="AudioStreamPlayer2D" parent="manager" unique_id=1314752020]
+stream = ExtResource("3_jqorx")
+volume_db = -4.86
+pitch_scale = 0.81
+
+[node name="world and bounds" type="StaticBody2D" parent="." unique_id=1291723431]
+
+[node name="Polygon2D" type="Polygon2D" parent="world and bounds" unique_id=680446418]
+position = Vector2(88, -88.00001)
+scale = Vector2(3.692901, 3.6929011)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-184, -64, 136, -63.999996, 135.99997, 111.99999, -184, 111.99999)
+uv = PackedVector2Array(-176, -64, 192, -64, 192, 80, -184, 80)
+
+[node name="lowerbound" type="CollisionShape2D" parent="world and bounds" unique_id=1850678903]
+shape = SubResource("WorldBoundaryShape2D_7qx7d")
+
+[node name="upperbound" type="CollisionShape2D" parent="world and bounds" unique_id=872997597]
+rotation = -3.1415925
+shape = SubResource("WorldBoundaryShape2D_oeqib")
+
+[node name="playerleft" parent="." unique_id=1658117625 instance=ExtResource("1_7qx7d")]
+position = Vector2(-448, 0)
+
+[node name="playerright" parent="." unique_id=2119176501 instance=ExtResource("2_51bk3")]
+position = Vector2(448, 0)
+
+[node name="ball" parent="." unique_id=630330890 instance=ExtResource("3_rgrph")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1177060678]
+
+[node name="right wall" type="Area2D" parent="." unique_id=895587701]
+script = ExtResource("3_efbr5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="right wall" unique_id=1574124081]
+shape = SubResource("WorldBoundaryShape2D_njo0q")
+
+[node name="left wall" type="Area2D" parent="." unique_id=1383865054]
+script = ExtResource("5_grylp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left wall" unique_id=1468188326]
+shape = SubResource("WorldBoundaryShape2D_no1ow")
+
+[connection signal="endgame" from="manager" to="manager" method="_on_endgame"]
+[connection signal="body_entered" from="right wall" to="playerleft" method="_on_winbounds_body_entered"]
+[connection signal="body_entered" from="right wall" to="right wall" method="_on_body_entered"]
+[connection signal="body_entered" from="left wall" to="left wall" method="_on_body_entered"]

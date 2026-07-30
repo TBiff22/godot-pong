@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dhabs3fxf4gxp"]
+
+[ext_resource type="Script" uid="uid://dq6h07dur2fkj" path="res://scripts/ball.gd" id="1_7s4qf"]
+[ext_resource type="AudioStream" uid="uid://elw0hswbwcdu" path="res://menu_blip.wav" id="2_cxlvu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2y21"]
+size = Vector2(40, 40)
+
+[node name="ball" type="CharacterBody2D" unique_id=190155461]
+script = ExtResource("1_7s4qf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=409541060]
+shape = SubResource("RectangleShape2D_e2y21")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=458607651]
+position = Vector2(76, -60)
+polygon = PackedVector2Array(-96, 48, -88, 39.999996, -64, 39.999996, -55.999985, 48, -55.999985, 72, -63.999992, 80, -87.99999, 80, -96.00001, 72)
+uv = PackedVector2Array(-96, 48, -87.999985, 40, -63.999985, 40, -55.999985, 48, -55.999985, 72, -64, 80, -88, 80, -96.00001, 72)
+
+[node name="Timer" type="Timer" parent="." unique_id=1522673153]
+
+[node name="collidesound" type="AudioStreamPlayer2D" parent="." unique_id=1823997886]
+stream = ExtResource("2_cxlvu")
+
+[node name="wallsound" type="AudioStreamPlayer2D" parent="." unique_id=1073703843]
+stream = ExtResource("2_cxlvu")
+volume_db = -12.149
+pitch_scale = 0.37
