@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://4uo6n1vsufk6"]
+
+[ext_resource type="Script" uid="uid://b08yue1sxamad" path="res://scripts/playerleft.gd" id="1_g0vnd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwe5k"]
+size = Vector2(16, 112)
+
+[node name="playerleft" type="CharacterBody2D" unique_id=1658117625]
+script = ExtResource("1_g0vnd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1488019792]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_qwe5k")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=2021331275]
+position = Vector2(152, -7)
+polygon = PackedVector2Array(-160, -48, -160, 64, -144, 64, -144, -48)
+uv = PackedVector2Array(-160, -48, -160, 64, -128, 64, -128, -48)

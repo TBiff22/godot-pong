@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://c70p56xxnfp3v"]
+
+[ext_resource type="Script" uid="uid://b7eufdqkwy368" path="res://scripts/start_screen.gd" id="1_tx5wa"]
+
+[node name="start screen" type="Control" unique_id=1911594206]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tx5wa")
+
+[node name="rally" type="Button" parent="." unique_id=1362301899]
+layout_mode = 0
+offset_left = 176.0
+offset_right = 435.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 47
+text = "Rally mode"
+
+[node name="cpu" type="Button" parent="." unique_id=1026142803]
+layout_mode = 0
+offset_left = -408.0
+offset_right = -164.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 47
+text = "CPU mode"
+
+[node name="instructions" type="RichTextLabel" parent="." unique_id=639451639]
+layout_mode = 0
+offset_left = -136.0
+offset_top = -104.0
+offset_right = 136.0
+offset_bottom = -8.0
+theme_override_font_sizes/normal_font_size = 32
+text = "choose your gamemode"
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1984438208]
+
+[node name="rally desc" type="RichTextLabel" parent="." unique_id=317337909]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 96.0
+offset_right = 416.0
+offset_bottom = 216.0
+theme_override_font_sizes/normal_font_size = 20
+text = "right-hand player copies your movements
+
+score by rallying"
+
+[node name="cpu desc" type="RichTextLabel" parent="." unique_id=1032503602]
+layout_mode = 0
+offset_left = -408.0
+offset_top = 88.0
+offset_right = -168.0
+offset_bottom = 200.0
+theme_override_font_sizes/normal_font_size = 20
+text = "fight against right-hand player
+
+score by winning"
+
+[node name="quit game" type="Button" parent="." unique_id=932237631]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -176.0
+offset_right = 64.0
+offset_bottom = -145.0
+text = "quit game (sad)"
+
+[connection signal="pressed" from="rally" to="." method="_on_rally_pressed"]
+[connection signal="pressed" from="cpu" to="." method="_on_cpu_pressed"]
+[connection signal="pressed" from="quit game" to="." method="_on_quit_game_pressed"]
